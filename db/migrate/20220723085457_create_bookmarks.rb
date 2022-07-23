@@ -1,8 +1,10 @@
 class CreateBookmarks < ActiveRecord::Migration[6.1]
   def change
     create_table :bookmarks do |t|
-      t.integer :movie_id
-      t.integer :list_id
+      t.text :comment
+
+      t.references  :list, foreign_key: true
+      t.references  :movie, foreign_key: true
 
       t.timestamps
     end
